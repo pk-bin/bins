@@ -1,0 +1,47 @@
+﻿<UserControl x:Class="WpfApplication1.Window1_Global_search"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:WpfApplication1"
+             xmlns:s="http://schemas.abtsoftware.co.uk/scichart"
+             mc:Ignorable="d" 
+             d:DesignHeight="300" d:DesignWidth="300">
+    <UserControl.Resources>
+
+        <ResourceDictionary>
+            <Style x:Key="AxisStyle1" TargetType="s:AxisBase">
+                <Setter Property="DrawMajorBands" Value="False"/>
+                <Setter Property="DrawMinorGridLines" Value="false"/>
+                <Setter Property="DrawMinorTicks" Value="false"/>
+                <Setter Property="DrawMajorTicks" Value="false"/>
+                <Setter Property="MajorGridLineStyle">
+                    <Setter.Value>
+                        <Style TargetType="Line">
+                            <Setter Property="Stroke" Value="#e6e6e6"/>
+                        </Style>
+                    </Setter.Value>
+                </Setter>
+            </Style>
+
+        </ResourceDictionary>
+    </UserControl.Resources>
+    <Grid>
+        <s:SciChartSurface Name="sciChart" Grid.Row="0" Background="Transparent">
+            <s:SciChartSurface.RenderableSeries>
+                <s:FastLineRenderableSeries x:Name="LineRenderableSeries" Stroke="#33adff"/>
+            </s:SciChartSurface.RenderableSeries>
+
+            <!--  Create an X Axis  -->
+            <s:SciChartSurface.XAxis>
+                <!--  Note, initial VisibleRange is set for display purposes only. Leave this unset to autorange once on startup  -->
+                <s:NumericAxis TickTextBrush="#969696" DrawMinorTicks="False" Style="{StaticResource AxisStyle1}" DrawMajorGridLines="False"/>
+            </s:SciChartSurface.XAxis>
+
+            <!--  Create a Y Axis with GrowBy  -->
+            <s:SciChartSurface.YAxis>
+                <s:NumericAxis AxisAlignment="Left" GrowBy="0.1, 0.1" Style="{StaticResource AxisStyle1}"/>
+            </s:SciChartSurface.YAxis>
+        </s:SciChartSurface>
+    </Grid>
+</UserControl>

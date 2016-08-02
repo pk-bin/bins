@@ -1,0 +1,191 @@
+﻿<UserControl x:Class="WpfApplication1.Setting_window"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:WpfApplication1"
+             mc:Ignorable="d" 
+             d:DesignHeight="300" d:DesignWidth="300">
+    <Grid>
+        <TabControl x:Name="tabControl" Margin="30,10,30,30">
+            <TabItem Header="접속관리 및 차트설정">
+                <Grid>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="*"/>
+                    </Grid.ColumnDefinitions>
+                    <Grid Grid.Column="0">
+                        <ScrollViewer VerticalScrollBarVisibility="Hidden">
+                            <StackPanel>
+                                <Expander Header="연결 설정" IsExpanded="True" FontSize="18">
+                                    <StackPanel>
+                                        <TextBlock FontSize="13" Margin="5,0,0,0">Host</TextBlock>
+                                        <TextBox Name= "hostName" FontSize="13" Height="19" Margin="5,0,5,0">129.254.246.132</TextBox>
+                                        <TextBlock FontSize="13" Margin="5,0,0,0" >Port</TextBlock>
+                                        <TextBox Name= "hostPort" FontSize="13" Height="19" Margin="5,0,5,0">9901</TextBox>
+                                        <Button Click="ConnectToServer" FontSize="13" Margin="5,0,5,0">Connect</Button>
+                                        <Button Click="DisConnectToServer" FontSize="13" Margin="5,0,5,0">DisConnect</Button>
+                                    </StackPanel>
+                                </Expander>
+                                <TextBlock FontSize="13" Margin="5,30,5,0">사이트 명 : 대성산</TextBlock>
+                                <TextBlock FontSize="13" Margin="5,0,5,0">위도 : 33</TextBlock>
+                                <TextBlock FontSize="13" Margin="5,0,5,0">경도 : 111</TextBlock>
+                                <TextBlock FontSize="13" Margin="5,0,5,0">고도 : 111</TextBlock>
+                             </StackPanel>
+                        </ScrollViewer>
+                    </Grid>
+                    <Grid Grid.Column="1">
+                        <ScrollViewer VerticalScrollBarVisibility="Hidden">
+                            <StackPanel>
+                                <Expander Header = "Left Spec" FontSize="18">
+                                    <StackPanel x:Name="Left_Spec_setting">
+                                        <TextBlock  FontSize="13" Margin="5,0,0,0">Spec dFreq</TextBlock>
+                                        <TextBox Name="Left_spec_dFreq" FontSize="13" Height="19" Margin="5,0,5,0"></TextBox>
+                                        <TextBlock  FontSize="13" Margin="5,0,0,0">Spec fSpan</TextBlock>
+                                        <TextBox Name="Left_spec_fSpan" FontSize="13" Height="19" Margin="5,0,5,0"></TextBox>
+                                        <TextBlock  FontSize="13" Margin="5,0,0,0">Spec u8Ant_Mode</TextBlock>
+                                        <TextBox Name="Left_spec_u8Ant_Mode" FontSize="13" Height="19" Margin="5,0,5,0"></TextBox>
+                                        <Button  Click="Left_Send_Spec_In" Content="Send Spec In" FontSize="13" Margin="5,0,5,0"/>
+                                    </StackPanel>
+                                </Expander>
+                            </StackPanel>
+                        </ScrollViewer>
+                    </Grid>
+                    <Grid Grid.Column="2">
+                        <ScrollViewer VerticalScrollBarVisibility="Hidden">
+                            <StackPanel>
+                                <Expander Header = "Right Spec" FontSize="18">
+                                    <StackPanel x:Name="Spec_setting">
+                                        <TextBlock  FontSize="13" Margin="5,0,0,0">Spec dFreq</TextBlock>
+                                        <TextBox Name="Right_spec_dFreq" FontSize="13" Height="19" Margin="5,0,5,0"></TextBox>
+                                        <TextBlock  FontSize="13" Margin="5,0,0,0">Spec fSpan</TextBlock>
+                                        <TextBox Name="Right_spec_fSpan" FontSize="13" Height="19" Margin="5,0,5,0"></TextBox>
+                                        <TextBlock  FontSize="13" Margin="5,0,0,0">Spec u8Ant_Mode</TextBlock>
+                                        <TextBox Name="Right_spec_u8Ant_Mode" FontSize="13" Height="19" Margin="5,0,5,0"></TextBox>
+                                        <Button  Click="Right_Send_Spec_In" Content="Send Spec In" FontSize="13" Margin="5,0,5,0"/>
+                                    </StackPanel>
+                                </Expander>
+                            </StackPanel>
+                        </ScrollViewer>
+                    </Grid>
+                </Grid>
+            </TabItem>
+            <TabItem Header="경보설정">
+                <Grid>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="3*"/>
+                        <ColumnDefinition Width="2*"/>
+                    </Grid.ColumnDefinitions>
+                    <Grid Grid.Column="0">
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="*"/>
+                            <RowDefinition Height="*"/>
+                        </Grid.RowDefinitions>
+                        <Grid Grid.Row="0">
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="*"/>
+                                <ColumnDefinition Width="2*"/>
+                            </Grid.ColumnDefinitions>
+                            <StackPanel Grid.Column="0" HorizontalAlignment="Center" VerticalAlignment="Center">
+                                <TextBlock FontSize="20">스펨트럼 경보 설정</TextBlock>
+                                <TextBlock ></TextBlock>
+                                <DockPanel HorizontalAlignment="Left">
+                                    <Ellipse HorizontalAlignment="Left" Height="15" Stroke="Black" Width="15" Fill="#FF0000" Margin="10,0,5,0"/>
+                                    <TextBlock FontSize="15"  Margin="5,0,5,0">경보</TextBlock>
+                                    <TextBox  Margin="10,0,10,0" FontSize="15">-50</TextBox>
+                                    <TextBlock FontSize="15"  Margin="5,0,5,0">dBm초과</TextBlock>
+                                </DockPanel>
+                                <DockPanel HorizontalAlignment="Left">
+                                    <Ellipse HorizontalAlignment="Left" Height="15" Stroke="Black" Width="15" Fill="#FFFF00" Margin="10,0,5,0"/>
+                                    <TextBlock FontSize="15"  Margin="5,0,5,0">주의</TextBlock>
+                                    <TextBox  Margin="10,0,10,0" FontSize="15">-50</TextBox>
+                                    <TextBlock FontSize="15"  Margin="5,0,5,0">dBm이하</TextBlock>
+                                </DockPanel>
+                                <DockPanel HorizontalAlignment="Left">
+                                    <Ellipse HorizontalAlignment="Left" Height="15" Stroke="Black" Width="15" Fill="#00FF00" Margin="10,0,5,0"/>
+                                    <TextBlock FontSize="15"  Margin="5,0,5,0">정상</TextBlock>
+                                    <TextBox  Margin="10,0,10,0" FontSize="15">-50</TextBox>
+                                    <TextBlock FontSize="15"  Margin="5,0,5,0">dBm이하</TextBlock>
+                                </DockPanel>
+                            </StackPanel>
+                            <Grid Grid.Column="1">
+                                <TextBlock FontSize="40">UserControl Spectrom</TextBlock>
+                            </Grid>
+                        </Grid>
+                        <Grid Grid.Row="1">
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="*"/>
+                                <ColumnDefinition Width="2*"/>
+                            </Grid.ColumnDefinitions>
+                            <StackPanel Grid.Column="0" HorizontalAlignment="Center" VerticalAlignment="Center">
+                                <TextBlock FontSize="20">항법해 경보 설정</TextBlock>
+                                <TextBlock ></TextBlock>
+                                <DockPanel HorizontalAlignment="Left">
+                                    <Ellipse HorizontalAlignment="Left" Height="15" Stroke="Black" Width="15" Fill="#FF0000" Margin="10,0,5,0"/>
+                                    <TextBlock FontSize="15"  Margin="5,0,5,0">경보</TextBlock>
+                                    <TextBox  Margin="10,0,10,0" FontSize="15">-50</TextBox>
+                                    <TextBlock FontSize="15"  Margin="5,0,5,0">m초과</TextBlock>
+                                </DockPanel>
+                                <DockPanel HorizontalAlignment="Left">
+                                    <Ellipse HorizontalAlignment="Left" Height="15" Stroke="Black" Width="15" Fill="#FFFF00" Margin="10,0,5,0"/>
+                                    <TextBlock FontSize="15"  Margin="5,0,5,0">주의</TextBlock>
+                                    <TextBox  Margin="10,0,10,0" FontSize="15">-50</TextBox>
+                                    <TextBlock FontSize="15"  Margin="5,0,5,0">m이하</TextBlock>
+                                </DockPanel>
+                                <DockPanel HorizontalAlignment="Left">
+                                    <Ellipse HorizontalAlignment="Left" Height="15" Stroke="Black" Width="15" Fill="#00FF00" Margin="10,0,5,0"/>
+                                    <TextBlock FontSize="15"  Margin="5,0,5,0">정상</TextBlock>
+                                    <TextBox  Margin="10,0,10,0" FontSize="15">-50</TextBox>
+                                    <TextBlock FontSize="15"  Margin="5,0,5,0">m이하</TextBlock>
+                                </DockPanel>
+                            </StackPanel>
+                            <Grid Grid.Column="1">
+                                <TextBlock FontSize="40">UserControl Tracking</TextBlock>
+                            </Grid>
+                        </Grid>
+                    </Grid>
+                    <Grid Grid.Column="1">
+                        <StackPanel VerticalAlignment="Center" >
+                            <DockPanel VerticalAlignment="Top">
+                                <TextBlock FontSize="15">혼신판단 지속시간</TextBlock>
+                                <TextBox FontSize="15">5</TextBox>
+                                <TextBlock FontSize="15">초</TextBlock>
+                            </DockPanel>
+                            <DockPanel VerticalAlignment="Top" Margin="15">
+                                <TextBlock FontSize="15">방향탐지 수행 레벨</TextBlock>
+                                <ComboBox SelectedIndex="0" HorizontalAlignment="Left" VerticalContentAlignment="Center" HorizontalContentAlignment="Center">
+                                    <ComboBoxItem>1초</ComboBoxItem>
+                                </ComboBox>
+                            </DockPanel>
+                            <DockPanel VerticalAlignment="Top" Margin="15">
+                                <TextBlock FontSize="15">RMS 갱신주기</TextBlock>
+                                <ComboBox SelectedIndex="0" HorizontalAlignment="Left" VerticalContentAlignment="Center" HorizontalContentAlignment="Center">
+                                    <ComboBoxItem>1초</ComboBoxItem>
+                                </ComboBox>
+                            </DockPanel>
+                            <DockPanel VerticalAlignment="Top" Margin="15">
+                                <TextBlock FontSize="15">MaxHold 갱신주기</TextBlock>
+                                <ComboBox SelectedIndex="0" HorizontalAlignment="Left" VerticalContentAlignment="Center" HorizontalContentAlignment="Center">
+                                    <ComboBoxItem>경로레벨이상</ComboBoxItem>
+                                </ComboBox>
+                            </DockPanel>
+                            <DockPanel HorizontalAlignment="Right" Margin="15">
+                                <Button HorizontalAlignment="Right" FontSize="12">설정</Button>
+                                <Button HorizontalAlignment="Right" FontSize="12">취소</Button>
+                            </DockPanel>
+                        </StackPanel>
+                    </Grid>
+                </Grid>
+            </TabItem>
+            <TabItem Header="저장설정">
+                <Grid>
+                </Grid>
+            </TabItem>
+            <TabItem Header="시스템점검">
+                <Grid>
+                </Grid>
+            </TabItem>
+        </TabControl>
+    </Grid>
+</UserControl>

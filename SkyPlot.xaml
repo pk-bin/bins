@@ -1,0 +1,36 @@
+﻿<UserControl x:Class="WpfApplication1.SkyPlot"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+                          xmlns:s="http://schemas.abtsoftware.co.uk/scichart"
+             xmlns:local="clr-namespace:WpfApplication1"
+             mc:Ignorable="d" 
+             d:DesignHeight="300" d:DesignWidth="300">
+    <Grid>
+        <s:SciChartSurface Name="polarChart" BorderThickness="0" Padding="0" Background="Transparent">
+            <!-- 원의 시작 축 조정-->
+            <s:SciChartSurface.LayoutTransform>
+                <RotateTransform Angle="270"/>
+            </s:SciChartSurface.LayoutTransform>
+            <!--x축 선 굵기,자동 눈금자 해제,주 눈금 20,부 눈금 10-->
+            <s:SciChartSurface.XAxis>
+                <s:PolarXAxis Name="xAxis" BorderBrush="#165D88" BorderThickness="0,0,1.5,1.5" AutoTicks="False" MajorDelta="45" MinorDelta="45" IsLabelCullingEnabled="False" DrawMinorGridLines="False" DrawMajorBands="False"  DrawMajorGridLines="False" VisibleRange="0,359.99"/>
+            </s:SciChartSurface.XAxis>
+            <!--Y축 최소 최대값만 보이게 함 ,90도 회전-->
+            <s:SciChartSurface.YAxis>
+                <s:PolarYAxis Name="yAxis" DrawMinorTicks="False" DrawMinorGridLines="False" DrawMajorBands="False" DrawMajorGridLines="False" Angle="90" VisibleRange="0,90"  FlipCoordinates="True"/>
+            </s:SciChartSurface.YAxis>
+            <s:SciChartSurface.Annotations>
+                <s:AxisMarkerAnnotation Name="Marker" FormattedValue="" AnnotationCanvas="XAxis" IsEditable="True" CanEditText="False" X1="0" Background="Red"/>
+            </s:SciChartSurface.Annotations>
+            <s:SciChartSurface.ChartModifier>
+                <s:ModifierGroup>
+                    <s:ZoomExtentsModifier/>
+                    <s:RubberBandXyZoomModifier IsXAxisOnly="True"/>
+                </s:ModifierGroup>
+            </s:SciChartSurface.ChartModifier>
+        </s:SciChartSurface>
+        <s:SciChartPerformanceOverlay TargetSurface="{Binding ElementName=polarChart}" Margin="5" VerticalAlignment="Top" IsHitTestVisible="False" Grid.Column="0"/>
+    </Grid>
+</UserControl>
